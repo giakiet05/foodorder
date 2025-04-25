@@ -119,7 +119,7 @@ const file_proto_user_proto_rawDesc = "" +
 	"\fUserResponse\x12\x16\n" +
 	"\x06exists\x18\x01 \x01(\bR\x06exists2E\n" +
 	"\vUserService\x126\n" +
-	"\tCheckUser\x12\x13.userpb.UserRequest\x1a\x14.userpb.UserResponseB\x1bZ\x19user-service/proto/userpbb\x06proto3"
+	"\tCheckUser\x12\x13.userpb.UserRequest\x1a\x14.userpb.UserResponseB\x0fZ\r/proto/userpbb\x06proto3"
 
 var (
 	file_proto_user_proto_rawDescOnce sync.Once
