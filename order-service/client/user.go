@@ -1,6 +1,7 @@
 package client
 
 import (
+	"github.com/giakiet05/foodorder/user-service/proto/userpb"
 	"google.golang.org/grpc"
 	"log"
 )
