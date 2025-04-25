@@ -4,7 +4,7 @@ import (
 	"context"
 	"github.com/giakiet05/foodorder/user-service/db"
 	"github.com/giakiet05/foodorder/user-service/models"
-	"github.com/giakiet05/foodorder/user-service/user-service/proto/userpb"
+	"github.com/giakiet05/foodorder/user-service/proto/userpb"
 )
 
 type Server struct {

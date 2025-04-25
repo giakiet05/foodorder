@@ -4,7 +4,7 @@ import (
 	"github.com/giakiet05/foodorder/user-service/db"
 	grpcserver "github.com/giakiet05/foodorder/user-service/grpc"
 	"github.com/giakiet05/foodorder/user-service/handlers"
-	"github.com/giakiet05/foodorder/user-service/user-service/proto/userpb"
+	"github.com/giakiet05/foodorder/user-service/proto/userpb"
 	"github.com/gorilla/mux"
 	"google.golang.org/grpc"
 	"log"

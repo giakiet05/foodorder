@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package foodpb;
+
+
+
+option go_package = "/proto/foodpb";
+
+service FoodService {
+  rpc CheckFood (FoodRequest) returns (FoodResponse);
+}
+
+message FoodRequest {
+  uint32 id = 1;
+}
+
+message FoodResponse {
+  bool exists = 1;
+}
