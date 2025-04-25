@@ -11,6 +11,7 @@ require (
 )
 
 require (
+	github.com/giakiet05/foodorder/food-service v0.0.0-20250425032353-814a3c1b21d9 // indirect
 	github.com/giakiet05/foodorder/user-service v0.0.0-20250425020037-3ab8ad00b258 // indirect
 	github.com/jinzhu/inflection v1.0.0 // indirect
 	github.com/jinzhu/now v1.1.5 // indirect

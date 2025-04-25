@@ -1,7 +1,9 @@
 package auth
 
 import (
+	"errors"
 	"github.com/golang-jwt/jwt/v5"
+	"strings"
 	"time"
 )
 
@@ -36,4 +38,28 @@ func ParseToken(tokenStr string) (*Claims, error) {
 		return nil, err
 	}
 	return token.Claims.(*Claims), nil
+}
+
+// ParseTokenFromHeader nhận HTTP request và trả về userID
+func ParseTokenFromHeader(authHeader string) (uint, error) {
+	if authHeader == "" || !strings.HasPrefix(authHeader, "Bearer ") {
+		return 0, errors.New("invalid auth header")
+	}
+
+	tokenStr := strings.TrimPrefix(authHeader, "Bearer ")
+
+	token, err := jwt.ParseWithClaims(tokenStr, &Claims{}, func(t *jwt.Token) (interface{}, error) {
+		return jwtKey, nil
+	})
+
+	if err != nil || !token.Valid {
+		return 0, errors.New("invalid token")
+	}
+
+	claims, ok := token.Claims.(*Claims)
+	if !ok {
+		return 0, errors.New("invalid claims")
+	}
+
+	return claims.UserId, nil
 }

@@ -1,3 +1,5 @@
+github.com/giakiet05/foodorder/food-service v0.0.0-20250425032353-814a3c1b21d9 h1:g3YIL6NYyxznsVur/ZfyEWwQc1DyKfZn3fRbExKUDnU=
+github.com/giakiet05/foodorder/food-service v0.0.0-20250425032353-814a3c1b21d9/go.mod h1:LFamXcUWpMbPnTH/MUja1nioU6gEYvOHja/tq3YAtIE=
 github.com/giakiet05/foodorder/user-service v0.0.0-20250425020037-3ab8ad00b258 h1:J6UjFjVxrPBcmbJGxIVEXd/YdBdZpNQw98gxdAAg0p0=
 github.com/giakiet05/foodorder/user-service v0.0.0-20250425020037-3ab8ad00b258/go.mod h1:fHCaQ/bxlyNx5QsfyXZeYjWEpOKAwbayRHU9CKCk/jY=
 github.com/go-logr/logr v1.4.2 h1:6pFjapn8bFcIbiKo3XT4j/BhANplGihG6tvd+8rYgrY=

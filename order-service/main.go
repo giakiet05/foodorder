@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"github.com/giakiet05/foodorder/order-service/client"
 	"github.com/giakiet05/foodorder/order-service/db"
 	"github.com/giakiet05/foodorder/order-service/handlers"
@@ -19,9 +18,7 @@ func main() {
 	r.HandleFunc("/orders/{id}", handlers.GetOrder).Methods("GET")
 
 	client.InitUserClient() // Khởi tạo kết nối gRPC tới user-service
-
-	exists := client.CheckUserExists(1)
-	fmt.Println("User exists:", exists)
+	client.InitFoodClient()
 
 	log.Println("✅ Order service running on port 8002")
 	log.Fatal(http.ListenAndServe(":8002", r))

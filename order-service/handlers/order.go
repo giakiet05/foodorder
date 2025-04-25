@@ -15,35 +15,39 @@ type OrderRequest struct {
 }
 
 func CreateOrder(w http.ResponseWriter, r *http.Request) {
-	tokenStr := r.Header.Get("Authorization")
-	if tokenStr == "" {
-		http.Error(w, "Missing token", http.StatusUnauthorized)
-		return
-	}
-
-	claims, err := auth.ParseToken(tokenStr)
-	if err != nil {
-		http.Error(w, "Invalid token", http.StatusUnauthorized)
-		return
-	}
-
 	var req OrderRequest
 	json.NewDecoder(r.Body).Decode(&req)
 
-	if !client.CheckFoodExists(req.FoodId) {
-		http.Error(w, "Food does not exist", http.StatusBadRequest)
+	authHeader := r.Header.Get("Authorization")
+	userId, err := auth.ParseTokenFromHeader(authHeader)
+	if err != nil {
+		http.Error(w, "Unauthorized", http.StatusUnauthorized)
+		return
+	}
+
+	userExists := client.CheckUserExists(userId)
+	foodExists := client.CheckFoodExists(req.FoodId)
+
+	if !userExists {
+		http.Error(w, "User not found", http.StatusNotFound)
+		return
+	}
+
+	if !foodExists {
+		http.Error(w, "Food not found", http.StatusNotFound)
 		return
 	}
 
 	order := models.Order{
-		UserId: claims.UserId,
+		UserId: userId,
 		FoodId: req.FoodId,
 		Status: "pending",
 	}
-	db.DB.Create(&order)
 
+	db.DB.Create(&order)
 	w.WriteHeader(http.StatusCreated)
 	json.NewEncoder(w).Encode(order)
+
 }
 
 func GetOrders(w http.ResponseWriter, r *http.Request) {
